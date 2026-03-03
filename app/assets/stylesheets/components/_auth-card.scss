@@ -1,0 +1,21 @@
+/* Hintergrund & Zentrierung */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Card */
+.auth-card {
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* Abstand zwischen Inputs */
+.form-inputs .input {
+  margin-bottom: 18px;
+}
