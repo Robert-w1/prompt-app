@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# 1. Clean the database 🗑️
+puts "Cleaning database..."
+Category.destroy_all
+
+# 2. Create the instances 🏗️
+Category.create!(name: "Funny", system_prompt: "Always start your answers to my prompt with a little joke.")
+
+# 3. Display a message 🎉
+puts "Finished! Created #{Category.count} category."
