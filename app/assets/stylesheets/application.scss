@@ -10,3 +10,72 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// STYLES
+$primary-text: #5A533D;
+$surface-light: #EFECE3;
+$disabled-text: #B0ACA0;
+
+// Buttons and fields
+.btn-primary,
+.btn-secondary,
+.input-field,
+.info-card,
+.folder-card {
+  background-color: $surface-light;
+  color: $primary-text;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+}
+
+// Buttons only
+.btn-primary,
+.btn-secondary {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.btn-primary:hover:not(:disabled),
+.btn-secondary:hover {
+  background-color: #E4E0D6; // slightly darker than #EFECE3
+}
+
+// Buttons disabled
+.btn-primary:disabled,
+.btn-primary-disabled {
+  color: $disabled-text;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+// Base body style
+body {
+  font-family: 'Roboto', sans-serif;
+  color: $primary-text;
+  font-weight: 400;
+  margin: 0;
+}
+
+// Headings style
+h1,
+h2,
+h3 {
+  font-family: 'Inter', sans-serif;
+  color: $primary-text;
+  font-weight: 600;
+}
+
+// Paragraphs style
+p {
+  font-family: 'Roboto', sans-serif;
+  color: $primary-text;
+  font-weight: 400;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
