@@ -1,0 +1,75 @@
+<aside id="sidebar" class="sidebar">
+
+  <!-- Top section first -->
+  <div class="sidebar-top">
+
+    <!-- Toggle / Logo -->
+    <div class="brand" id="sidebar-toggle">
+      <span class="logo">💡</span>
+      <span class="brand-name">Luminary</span>
+    </div>
+    <!-- Search button -->
+    <div class="nav-item">
+      <span class="icon">🔍</span>
+      <span class="label">Search</span>
+    </div>
+    <!-- New chat -->
+    <div class="nav-item">
+      <span class="icon">✚</span>
+      <span class="label">New chat</span>
+    </div>
+    <!-- Chats -->
+    <div class="nav-item">
+      <span class="icon">💬</span>
+      <span class="label">Chats</span>
+    </div>
+    <!-- Projects -->
+    <div class="nav-item">
+      <span class="icon">📁</span>
+      <span class="label">Projects</span>
+    </div>
+    <!-- Recent Section -->
+    <div class="recent-section">
+      <div class="recent-title">Recent</div>
+
+      <% @recent_chats&.each do |chat| %>
+        <div class="recent-item">
+          <span class="label"><%= chat.title %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Bottom avatar -->
+  <div class="sidebar-bottom">
+    <div class="avatar-wrapper">
+      <%= image_tag "avatar.png", class: "avatar" %>
+
+      <div class="avatar-menu">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!--chat_controller-->
+<!-- class ChatController < ApplicationController
+  before_action :enable_sidebar
+
+  private
+
+  def enable_sidebar
+    @show_sidebar = true
+  end
+end -->
+
+<!--project_controller-->
+<!-- class ProjectsController < ApplicationController
+  before_action :enable_sidebar
+
+  private
+
+  def enable_sidebar
+    @show_sidebar = true
+  end
+end -->
