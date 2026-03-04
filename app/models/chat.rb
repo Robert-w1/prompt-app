@@ -4,5 +4,8 @@ class Chat < ApplicationRecord
 
   has_many :messages, dependent: :destroy
 
+  has_many :chat_projects, dependent: :destroy
+  has_many :projects, through: :chat_projects
+
   validates :title, presence: true
 end

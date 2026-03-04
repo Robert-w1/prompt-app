@@ -2,4 +2,16 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
-import "bootstrap"
+
+// Re-initialize Bootstrap components that require explicit init after Turbo navigations
+document.addEventListener("turbo:load", () => {
+  const toggle = document.getElementById("sidebar-toggle")
+  const sidebar = document.getElementById("sidebar")
+
+  if (toggle && sidebar) {
+    toggle.addEventListener("click", () => {
+      console.log("Toggling sidebar")
+      sidebar.classList.toggle("collapsed")
+    })
+  }
+})
