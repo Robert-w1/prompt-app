@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
+import "bootstrap"
 
 // Re-initialize Bootstrap components that require explicit init after Turbo navigations
 document.addEventListener("turbo:load", () => {
