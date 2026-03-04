@@ -160,6 +160,10 @@ GEM
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
+    kramdown (2.5.2)
+      rexml (>= 3.4.4)
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     logger (1.7.0)
     loofah (2.25.0)
       crass (~> 1.0.2)
@@ -275,6 +279,7 @@ GEM
       actionpack (>= 7.0)
       railties (>= 7.0)
     rexml (3.4.4)
+    rouge (4.7.0)
     rubyzip (3.2.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -350,9 +355,12 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
+  kramdown
+  kramdown-parser-gfm
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.6)
+  rouge
   sassc-rails
   selenium-webdriver
   simple_form!
@@ -413,6 +421,8 @@ CHECKSUMS
   io-console (0.8.2) sha256=d6e3ae7a7cc7574f4b8893b4fca2162e57a825b223a177b7afa236c5ef9814cc
   irb (1.17.0) sha256=168c4ddb93d8a361a045c41d92b2952c7a118fa73f23fe14e55609eb7a863aae
   jbuilder (2.14.1) sha256=4eb26376ff60ef100cb4fd6fd7533cd271f9998327e86adf20fd8c0e69fabb42
+  kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
+  kramdown-parser-gfm (1.1.0) sha256=fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   loofah (2.25.0) sha256=df5ed7ac3bac6a4ec802df3877ee5cc86d027299f8952e6243b3dac446b060e6
   mail (2.9.0) sha256=6fa6673ecd71c60c2d996260f9ee3dd387d4673b8169b502134659ece6d34941
@@ -465,6 +475,7 @@ CHECKSUMS
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
   responders (3.2.0) sha256=89c2d6ac0ae16f6458a11524cae4a8efdceba1a3baea164d28ee9046bd3df55a
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
+  rouge (4.7.0) sha256=dba5896715c0325c362e895460a6d350803dbf6427454f49a47500f3193ea739
   rubyzip (3.2.2) sha256=c0ed99385f0625415c8f05bcae33fe649ed2952894a95ff8b08f26ca57ea5b3c
   sassc (2.4.0) sha256=4c60a2b0a3b36685c83b80d5789401c2f678c1652e3288315a1551d811d9f83e
   sassc-rails (2.1.2) sha256=5f4fdf3881fc9bdc8e856ffbd9850d70a2878866feae8114aa45996179952db5

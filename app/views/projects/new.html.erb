@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>New Project</h1>
+
+  <%= form_with model: @project do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "input-field" %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "input-field" %>
+    </div>
+
+    <%= f.submit "Create Project", class: "btn-primary" %>
+  <% end %>
+
+</div>
