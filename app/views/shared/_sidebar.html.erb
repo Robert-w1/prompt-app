@@ -28,7 +28,7 @@
     <%= link_to chats_path, class: "nav-item" do %>
       <span class="icon">💬</span>
       <span class="label">Chats</span>
-    <% end %>>
+    <% end %>
     <!-- Projects -->
     <%= link_to projects_path, class: "nav-item" do %>
       <span class="icon">📁</span>
@@ -54,7 +54,8 @@
       </div>
 
       <div class="avatar-menu">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <%= link_to "Log out", destroy_user_session_path,
+            data: { turbo_method: :delete } %>
       </div>
     </div>
   </div>
