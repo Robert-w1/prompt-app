@@ -6,12 +6,13 @@ import * as bootstrap from "bootstrap"
 
 // Re-initialize Bootstrap components that require explicit init after Turbo navigations
 document.addEventListener("turbo:load", () => {
-  // Initialize tooltips
-  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-    new bootstrap.Tooltip(el)
-  })
-  // Initialize popovers
-  document.querySelectorAll('[data-bs-toggle="popover"]').forEach((el) => {
-    new bootstrap.Popover(el)
-  })
+  const toggle = document.getElementById("sidebar-toggle")
+  const sidebar = document.getElementById("sidebar")
+
+  if (toggle && sidebar) {
+    toggle.addEventListener("click", () => {
+      console.log("Toggling sidebar")
+      sidebar.classList.toggle("collapsed")
+    })
+  }
 })
