@@ -14,11 +14,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
-    <%= yield %>
+  <body>
+    <%= render "shared/navbar" unless @show_sidebar %>
+    <%= render "shared/flashes" %>
+    <!-- A div where we will separate the instance of sidebar showing -->
+    <div class="page-wrapper <%= "with-sidebar" if @show_sidebar %>">
+      <% if @show_sidebar %>
+        <%= render "shared/sidebar" %>
+      <% end %>
+      <main class="main-content">
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
-
-<!-- All containers -->
