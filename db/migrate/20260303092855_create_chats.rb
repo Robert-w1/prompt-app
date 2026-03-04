@@ -3,7 +3,7 @@ class CreateChats < ActiveRecord::Migration[7.1]
     create_table :chats do |t|
       t.string :title
       t.references :user, null: false, foreign_key: true
-      t.references :category, null: false, foreign_key: true
+      t.references :category, foreign_key: true
 
       t.timestamps
     end

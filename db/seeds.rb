@@ -8,7 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
+# Category
 # 1. Clean the database 🗑️
+puts
+puts
+puts "---- Categories ----"
 puts "Cleaning database..."
 Category.destroy_all
 
@@ -17,3 +22,24 @@ Category.create!(name: "Funny", system_prompt: "Always start your answers to my 
 
 # 3. Display a message 🎉
 puts "Finished! Created #{Category.count} category."
+puts
+puts
+
+# Chats
+# 1. Clean the database 🗑️
+puts
+puts
+puts "---- Chats ----"
+puts "Cleaning database..."
+Chat.destroy_all
+
+# 2. Create the instances 🏗️
+# User.create!(name: "guest", email: "guest@gmail.com", )
+chat = Chat.new(title: "Finding cat names")
+chat.user = User.last
+chat.save
+
+# 3. Display a message 🎉
+puts "Finished! Created #{Chat.count} category."
+puts
+puts
