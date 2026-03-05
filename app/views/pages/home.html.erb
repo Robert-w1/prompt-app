@@ -1,67 +1,133 @@
-<!--Hero Section (new)-->
-<section>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= asset_path('banner_text_title.png') %>');">
-    <div class="container align">
-      <div>
-        <h1></strong>Your AI Is Powerful. Your Prompts Probably Aren’t.</strong></h1>
-        <p></strong>Transform your prompts before ChatGPT, Claude, or Gemini
-        — so you get sharper reasoning and elite-level output.</strong></p>
-      </div>
-      <div class="">
-        <a class="btn btn-primary mb-1" href=<%= new_user_session_path %> %>Start Free — Optimize Your AI</a>
-        <!--Note-->
-        <p></strong>Built for power users who demand the best.</strong></p>
-      </div>
+<!-- Hero section -->
+<section class="hero-section">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Meet Luminary</p>
+    <h1 class="hero-headline">
+      Stop prompting.<br>
+      <span class="hero-headline-accent">Start commanding.</span>
+    </h1>
+    <p class="hero-sub">
+      Most people type a question and hope for the best. Luminary turns what you
+      actually mean into a prompt that makes AI perform at its ceiling.
+    </p>
+    <div class="hero-cta-group">
+      <%= link_to "Try Luminary", new_user_session_path, class: "btn-primary" %>
+      <p class="hero-cta-note">No credit card. No setup. Just better output.</p>
     </div>
   </div>
 </section>
 
-<!--Problem Section-->
-<section>
-  <div class="container cards-align">
-    <h1 class=pt-3>You’re Good at AI. But You’re Still Leaving Output on the Table.</h1>
-      <div class="cards">
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('intent.png') %>')">
-      Identifies Key Context
-        </div>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('key_context.png') %>')">
-      Clarifies Objectives
-        </div>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('objectives.png') %>')">
-      Optimizes for Depth
+<!-- Cards section -->
+<section class="features-section">
+  <div class="container">
+    <h2 class="section-title">Your AI is powerful.</h2>
+    <p class="section-sub">Your prompts probably aren't. Luminary fixes that.</p>
+
+    <div class="row g-3 justify-content-center">
+
+      <div class="col-12 col-md-4">
+        <div class="info-card h-100">
+          <div class="info-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m1.636-6.364-.707-.707M12 21v-1M6.343 17.657l-.707.707M17.657 6.343l.707-.707"/>
+            </svg>
+          </div>
+          <h3 class="info-card__title">Missing context</h3>
+          <p class="info-card__body">AI can't read your mind. Luminary pulls out what you know, but didn't say. And puts it in.</p>
         </div>
       </div>
-    <h3>Then sends your Luminary prompt to your AI of choice.</h3>
+
+      <div class="col-12 col-md-4">
+        <div class="info-card h-100">
+          <div class="info-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2m6-2a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"/>
+            </svg>
+          </div>
+          <h3 class="info-card__title">Fuzzy objectives</h3>
+          <p class="info-card__body">Vague in, vague out. Luminary sharpens your goal into something the model can actually execute.</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="info-card h-100">
+          <div class="info-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h12"/>
+            </svg>
+          </div>
+          <h3 class="info-card__title">Shallow output</h3>
+          <p class="info-card__body">Generic prompts get generic answers. Luminary structures yours to unlock reasoning, depth, and nuance.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!--How It Works Section-->
-<section class=pt-5>
-  <h1>How Luminary Works</h1>
-    <div>
-      <h2>1. Submit Your Initial Prompt</h2>
-      <p>"Create a marketing strategy for my SaaS product."</p>
+<!-- 3 steps section -->
+<section class="how-section">
+  <div class="container">
+    <h2 class="section-title">How it works</h2>
+    <p class="section-sub">Three steps. Smarter output. Every time.</p>
+
+    <div class="how-steps">
+
+      <div class="how-step">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h3 class="step-title">Drop in your rough idea</h3>
+          <p class="step-body">Don't overthink it. Write whatever you've got - a sentence, a goal, a half-baked thought.</p>
+          <div class="step-example">"Help me write a marketing strategy for my SaaS."</div>
+        </div>
+      </div>
+
+      <div class="how-step-connector"></div>
+
+      <div class="how-step">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h3 class="step-title">Luminary asks the right questions</h3>
+          <p class="step-body">A quick back-and-forth to nail your audience, tone, constraints, and goal. Takes 60 seconds, not 60 minutes.</p>
+          <div class="step-tags">
+            <span class="step-tag">Who's this for?</span>
+            <span class="step-tag">What's the goal?</span>
+            <span class="step-tag">What format?</span>
+            <span class="step-tag">Any constraints?</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step-connector"></div>
+
+      <div class="how-step">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h3 class="step-title">Copy. Paste. Done.</h3>
+          <p class="step-body">Your refined prompt is ready. Save it to a project, or paste it straight into ChatGPT, Claude, Gemini or any AI of choice.</p>
+          <div class="step-example step-example--gold">
+            ✨ "Act as a senior SaaS growth strategist. I'm running a B2B product targeting mid-market teams with a 60–90 day sales cycle. Identify the 3 highest-leverage marketing channels for reducing CAC while improving trial-to-paid conversion. Return a prioritised action plan with estimated impact, required resources, and one measurable KPI per recommendation."
+          </div>
+          <div class="step-example-after">Engineered prompt → Elite output → Paste into
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/ChatGPT-Logo.svg" alt="ChatGPT" title="ChatGPT" class="llm-logo">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/claude-ai-icon.png" alt="Gemini" title="Gemini" class="llm-logo">
+            <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/gemini-color.png" alt="Claude" title="Claude" class="llm-logo">
+            <span class="llm-etc">...</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div>
-      <h2>2. Luminary Gives You an Enhanced, Modifiable Prompt</h2>
-      <p>
-        <li>
-          <ul>Target: B2B HR leaders
-           <ul>   Goal: Increase demo bookings
-           <ul>   Budget: $50/month
-           <ul>   Channels: LinkedIn & Paid Social
-           <ul>Deliverable: 90-Day Action Plan
-</p>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title">Your AI is waiting.<br>Give it something worthy.</h2>
+      <%= link_to "Get started", new_user_session_path, class: "btn-primary btn-primary--large" %>
     </div>
-    <div>
-      <p>Identifies Key Context</p>
-    </div>
-    <div>
-      <p>Clarifies Objectives</p>
-    </div>
-    <div>
-      <p>Optimizes for Depth</p>
-    </div>
-  <!--Note-->
-  <p>Then sends your Luminary prompt to your AI of choice.</p>
+  </div>
 </section>

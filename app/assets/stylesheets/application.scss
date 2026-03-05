@@ -25,7 +25,7 @@ $disabled-text: #B0ACA0;
 .folder-card {
   background-color: $surface-light;
   color: $primary-text;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   box-shadow: none;
 }
@@ -53,17 +53,18 @@ $disabled-text: #B0ACA0;
 
 // Base body style
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: $body-font;
   color: $primary-text;
   font-weight: 400;
   margin: 0;
+  background-color: #F7F5EF;
 }
 
 // Headings style
 h1,
 h2,
 h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: $headers-font;
   color: $primary-text;
   font-weight: 600;
 }
@@ -79,4 +80,8 @@ p {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+.main-content {
+  padding: 0px;
 }
