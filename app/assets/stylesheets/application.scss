@@ -17,6 +17,17 @@ $primary-text: #5A533D;
 $surface-light: #EFECE3;
 $disabled-text: #B0ACA0;
 
+// DIVIDERS
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.main-content {
+  padding: 0px;
+}
+
 // Buttons and fields
 .btn-primary,
 .btn-secondary,
@@ -81,12 +92,17 @@ p {
   font-weight: 400;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
+// Links
+a {
+  color: inherit;
+  text-decoration: none;
 
-.main-content {
-  padding: 0px;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: inherit;
+  }
 }
