@@ -40,6 +40,14 @@ user = User.create!(email: "guest123@gmail.com", password: "123123" , password_c
 chat.user = user
 chat.save
 
+5.times do |i|
+  project = Project.new
+  project.name = "Project #{i}"
+  project.description = "Desc #{i}"
+  project.user = user
+  project.save
+end
+
 # 3. Display a message 🎉
 puts "Finished! Created #{Chat.count} category."
 puts

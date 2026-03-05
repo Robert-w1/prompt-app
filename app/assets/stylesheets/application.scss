@@ -30,6 +30,11 @@ $disabled-text: #B0ACA0;
   box-shadow: none;
 }
 
+.folder-card a {
+  color: $primary-text;
+  text-decoration: none;
+}
+
 // Buttons only
 .btn-primary,
 .btn-secondary {
