@@ -25,22 +25,24 @@ puts "Finished! Created #{Category.count} category."
 puts
 puts
 
-# Chats
+# Chats and User
 # 1. Clean the database 🗑️
 puts
 puts
 puts "---- Chats ----"
 puts "Cleaning database..."
 Chat.destroy_all
+User.find_by(email: "guest@gmail.com").destroy unless User.find_by(email: "guest@gmail.com").nil?
 
 # 2. Create the instances 🏗️
 # User.create!(name: "guest", email: "guest@gmail.com", )
 chat = Chat.new(title: "Finding cat names")
-user = User.create!(email: "guest123@gmail.com", password: "123123" , password_confirmation: "123123", name: "guest")
+
+user = User.create!(email: "guest@gmail.com", password: "123123" , password_confirmation: "123123", name: "guest")
 chat.user = user
 chat.save
 
 # 3. Display a message 🎉
-puts "Finished! Created #{Chat.count} category."
+puts "Finished! Created #{Chat.count} chat(s)."
 puts
 puts
