@@ -10,6 +10,18 @@ class ChatsController < ApplicationController
     @message = Message.new
   end
 
+  def create
+    @chat = Chat.new(title: "Untitled")
+    @chat.user = current_user
+
+    if @chat.save
+      redirect_to chat_path(@chat)
+    else
+      @chats = Chat.where(user: current_user)
+      render "chats"
+    end
+  end
+
   private
 
   def enable_sidebar
