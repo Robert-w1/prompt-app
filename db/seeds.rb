@@ -58,6 +58,14 @@ categories.each do |cat|
   Category.create!(name: cat, system_prompt: "system_prompt")
 end
 
+5.times do |i|
+  project = Project.new
+  project.name = "Project #{i}"
+  project.description = "Desc #{i}"
+  project.user = user
+  project.save
+end
+
 # 3. Display a message 🎉
 puts "Finished! Created #{Category.count} category."
 puts
