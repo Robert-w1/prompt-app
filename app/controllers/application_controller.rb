@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    chats_path
+    chats_path   # change this to wherever you want
+  end
+
+  def after_sign_up_path_for(resource)
+    projects_path   # or whatever you want
   end
 end

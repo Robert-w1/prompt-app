@@ -36,7 +36,8 @@ Chat.destroy_all
 # 2. Create the instances 🏗️
 # User.create!(name: "guest", email: "guest@gmail.com", )
 chat = Chat.new(title: "Finding cat names")
-chat.user = User.last
+user = User.create!(email: "guest123@gmail.com", password: "123123" , password_confirmation: "123123", name: "guest")
+chat.user = user
 chat.save
 
 # 3. Display a message 🎉
