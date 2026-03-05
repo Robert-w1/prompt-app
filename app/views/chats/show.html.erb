@@ -25,7 +25,14 @@
       <%= f.input :content, required: true, placeholder: "Type your first message", label: false, input_html: { class: "input-field" } %>
 
       <%= f.simple_fields_for @chat do |chat_form| %>
-      <%= chat_form.input :category_id, as: :check_boxes, collection: Category.all, label: "" %>
+        <%= chat_form.input :category_id,
+              as: :radio_buttons,
+              collection: Category.all,
+              label: "",
+              item_wrapper_class: "category-item",
+              input_html: { class: "category-checkbox" },
+              item_label_class: "btn-secondary",
+              wrapper_html: { class: "categories-grid" } %>
       <% end %>
 
       <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>

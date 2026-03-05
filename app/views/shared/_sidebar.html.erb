@@ -20,7 +20,7 @@
       <span class="label">Search</span>
     </div>
     <!-- New chat -->
-    <%= link_to chats_path, class: "nav-item" do %>
+    <%= link_to chats_path, data: { turbo_method: :post }, class: "nav-item" do %>
       <span class="icon">✚</span>
       <span class="label">New chat</span>
     <% end %>

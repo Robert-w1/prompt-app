@@ -1,0 +1,28 @@
+.category-checkbox {
+  display: none;
+}
+
+// .category-button:hover {
+//   background: #eaeaea;
+// }
+
+.category-checkbox:checked + label,
+label:has(.category-checkbox:checked) {
+  background-color: #859279;
+}
+
+.categories-grid .checkbox {
+  display: contents;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
