@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
   before_action :enable_sidebar
 
   def index
-    @chats = Chat.all
+    @chats = current_user.chats.all
   end
 
   def show

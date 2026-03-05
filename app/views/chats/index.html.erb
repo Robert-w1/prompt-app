@@ -1,5 +1,5 @@
 <h1>Chats</h1>
 
 <% @chats.each do |chat| %>
-  <%= link_to chat.title, chat_path(chat) %>
+  <%= link_to chat.title, chat_path(chat) %> (<%= chat.category.name unless chat.category.nil?%>)
 <% end %>
