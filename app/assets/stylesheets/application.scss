@@ -86,6 +86,10 @@ h3 {
   font-weight: 600;
 }
 
+h2:empty {
+  min-height: calc(1.325rem + 1vw); // auto size of h2 is calc(1.325rem + 0.9vw)
+}
+
 // Paragraphs style
 p {
   font-family: 'Roboto', sans-serif;

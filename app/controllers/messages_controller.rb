@@ -23,11 +23,11 @@ class MessagesController < ApplicationController
       category = Category.find(cat_id)
       @chat.category = category
       @chat.save
+      category_prompt = "[Categories: #{@chat.category.name}]"
     end
 
     if @message.save
       user_message = @message.content
-      category_prompt = "[Categories: #{@chat.category.name}]"
       combined_message = [category_prompt, user_message].compact.join("\n\n")
 
       ruby_llm_chat = RubyLLM.chat

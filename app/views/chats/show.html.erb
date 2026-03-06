@@ -1,6 +1,16 @@
 <div class="container">
   <%= link_to "← ", chats_path %>
-  <h1 id="chat_title">Hello.</h1>
+
+  <% if @chat.messages.empty? %><!-- Initial show page before first message -->
+    <h1 id="chat_title">Hello.</h1>
+  <% else %> <!-- Show page after first message -->
+    <h1 id="chat_title"><%= @chat.title %></h1>
+    <% if @chat.category.nil? %>
+      <h2 id="category-subtitle" class="empty"></h2>
+    <% else %>
+      <h2 id="category-subtitle"><%= @chat.category.name  %></h2>
+    <% end %>
+  <% end %>
 
   <div id="messages">
     <% @chat.messages.each do |message| %>
@@ -34,15 +44,17 @@
     <%= simple_form_for [@chat, @message] do |f| %>
       <%= f.input :content, required: true, placeholder: "Type your first message", label: false, input_html: { class: "input-field" } %>
 
+      <% if @chat.messages.empty? %><!-- Initial show page before first message -->
       <%= f.simple_fields_for @chat do |chat_form| %>
         <%= chat_form.input :category_id,
-              as: :radio_buttons,
-              collection: Category.all,
-              label: "",
-              item_wrapper_class: "category-item",
-              input_html: { class: "category-checkbox" },
-              item_label_class: "btn-secondary",
-              wrapper_html: { class: "categories-grid" } %>
+          as: :radio_buttons,
+          collection: Category.all,
+          label: "",
+          item_wrapper_class: "category-item",
+          input_html: { class: "category-checkbox" },
+          item_label_class: "btn-secondary",
+          wrapper_html: { class: "categories-grid" } %>
+        <% end %>
       <% end %>
 
       <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>
