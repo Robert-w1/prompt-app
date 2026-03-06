@@ -2,7 +2,8 @@ class ChatsController < ApplicationController
   before_action :enable_sidebar
 
   def index
-    @chats = current_user.chats.all
+    # Order chats newest first for the index view
+    @chats = current_user.chats.order(created_at: :desc)
   end
 
   def show
@@ -11,7 +12,7 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.new(title: "Untitled")
+    @chat = Chat.new(title: Chat::DEFAULT_TITLE)
     @chat.user = current_user
 
     if @chat.save
@@ -20,6 +21,13 @@ class ChatsController < ApplicationController
       @chats = Chat.where(user: current_user)
       render "chats"
     end
+  end
+
+  def destroy
+    # Find the chat belonging to current user and delete it
+    @chat = current_user.chats.find(params[:id])
+    @chat.destroy
+    redirect_to chats_path, notice: "Chat deleted"
   end
 
   private
