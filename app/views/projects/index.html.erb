@@ -1,13 +1,35 @@
 <div class="container">
-  <h1>All Projects</h1>
+  <h1 class="mb-4">All Projects</h1>
 
-  <%= link_to "New Project", new_project_path, class: "btn-primary" %>
+  <%= link_to "+ New Project", new_project_path, class: "btn-primary text-decoration-none" %>
 
-  <ul>
+  <div class="d-flex flex-wrap gap-3 mt-4">
     <% @projects.each do |project| %>
-      <li>
-        <%= link_to project.name, project_path(project) %>
-      </li>
+      <%= link_to project_path(project), class: "card folder-card text-decoration-none", style: "width: 18rem;" do %>
+        <div class="card-body">
+          <h5 class="card-title"><%= project.name %></h5>
+          <p class="card-text"><%= project.description %></p>
+        </div>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 </div>
+<!-- we do not want a bullet point list. We want them to display as cards.
+Chnage the picture, title, margin, etc. Get it looking good!-->
+
+ <!--       <section>
+          <div class="container cards-align">
+              <div class="cards">
+                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('intent.png') %>')">
+              Project 1
+                </div>
+                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('key_context.png') %>')">
+              Project 2
+                </div>
+                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('objectives.png') %>')">
+              Project 3
+                </div>
+              </div>
+          </div>
+        </section>
+-->

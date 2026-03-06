@@ -9,6 +9,27 @@
 #   end
 
 
+# Chats and User
+# 1. Clean the database 🗑️
+puts
+puts
+puts "---- Chats ----"
+puts "Cleaning database..."
+Chat.destroy_all
+User.find_by(email: "guest@gmail.com").destroy unless User.find_by(email: "guest@gmail.com").nil?
+
+# 2. Create the instances 🏗️
+chat = Chat.new(title: "Finding cat names")
+
+user = User.create!(email: "guest@gmail.com", password: "123123" , password_confirmation: "123123", name: "guest")
+chat.user = user
+chat.save
+
+# 3. Display a message 🎉
+puts "Finished! Created #{Chat.count} chat(s)."
+puts
+puts
+
 # Category
 # 1. Clean the database 🗑️
 puts
@@ -18,28 +39,34 @@ puts "Cleaning database..."
 Category.destroy_all
 
 # 2. Create the instances 🏗️
-Category.create!(name: "Funny", system_prompt: "Always start your answers to my prompt with a little joke.")
+categories = [
+  "Coding & Development",
+  "Writing & Content",
+  "Business & Strategy",
+  "Marketing & Sales",
+  "Data & Analysis",
+  "Education & Learning",
+  "Science & Research",
+  "Legal & Compliance",
+  "Finance & Accounting",
+  "Health & Wellness",
+  "Design & Creative",
+  "Career & Professional Development",
+  "Travel & Lifestyle"
+]
+categories.each do |cat|
+  Category.create!(name: cat, system_prompt: "system_prompt")
+end
+
+5.times do |i|
+  project = Project.new
+  project.name = "Project #{i}"
+  project.description = "Desc #{i}"
+  project.user = user
+  project.save
+end
 
 # 3. Display a message 🎉
 puts "Finished! Created #{Category.count} category."
-puts
-puts
-
-# Chats
-# 1. Clean the database 🗑️
-puts
-puts
-puts "---- Chats ----"
-puts "Cleaning database..."
-Chat.destroy_all
-
-# 2. Create the instances 🏗️
-# User.create!(name: "guest", email: "guest@gmail.com", )
-chat = Chat.new(title: "Finding cat names")
-chat.user = User.last
-chat.save
-
-# 3. Display a message 🎉
-puts "Finished! Created #{Chat.count} category."
 puts
 puts

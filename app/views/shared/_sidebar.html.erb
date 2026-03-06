@@ -4,80 +4,61 @@
   <div class="sidebar-top">
 
     <!-- Toggle / Logo -->
-    <div class="brand">
+    <div class="sidebar-header">
       <%= link_to root_path, class: "brand-link" do %>
-        <span class="logo">💡</span>
+        <%= image_tag "Logo.png", class: "brand-logo" %>
         <span class="brand-name">Luminary</span>
       <% end %>
-
-      <button id="sidebar-toggle" class="toggle-btn">
-        ☰
+      <button id="sidebar-toggle" class="toggle-btn" aria-label="Toggle sidebar">
+        <i data-feather="menu"></i>
       </button>
     </div>
-    <!-- Search button -->
-    <div class="nav-item">
-      <span class="icon">🔍</span>
-      <span class="label">Search</span>
-    </div>
-    <!-- New chat -->
-    <%= link_to chats_path, class: "nav-item" do %>
-      <span class="icon">✚</span>
-      <span class="label">New chat</span>
-    <% end %>
-    <!-- Chats -->
-    <%= link_to chats_path, class: "nav-item" do %>
-      <span class="icon">💬</span>
-      <span class="label">Chats</span>
-    <% end %>>
-    <!-- Projects -->
-    <%= link_to projects_path, class: "nav-item" do %>
-      <span class="icon">📁</span>
-      <span class="label">Projects</span>
-    <% end %>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+      <!-- Search button -->
+      <div class="nav-item" id="sidebar-search-btn">
+        <i data-feather="search"></i>
+        <span class="label">Search</span>
+      </div>
+
+      <!-- New chat -->
+      <%= link_to chats_path, data: { turbo_method: :post }, class: "nav-item" do %>
+        <i data-feather="edit"></i>
+        <span class="label">New chat</span>
+      <% end %>
+      <!-- Chats -->
+      <%= link_to chats_path, class: "nav-item" do %>
+        <i data-feather="message-square"></i>
+        <span class="label">Chats</span>
+      <% end %>
+      <!-- Projects -->
+      <%= link_to projects_path, class: "nav-item" do %>
+        <i data-feather="folder"></i>
+        <span class="label">Projects</span>
+      <% end %>
+    </nav>
     <!-- Recent Section -->
     <div class="recent-section">
       <div class="recent-title">Recent</div>
-
       <% @recent_chats&.each do |chat| %>
-        <div class="recent-item">
-          <span class="label"><%= chat.title %></span>
-        </div>
+        <%= link_to chat_path(chat), class: "nav-item recent-item" do %>
+          <i data-feather="message-square"></i>
+          <span class="label recent-label"><%= chat.title.presence || "Untitled" %></span>
+        <% end %>
       <% end %>
     </div>
   </div>
 
-  <!-- Bottom avatar -->
+  <!-- Bottom avatar and logout -->
   <div class="sidebar-bottom">
-    <div class="avatar-wrapper">
-      <div class="avatar">
+    <div class="avatar-wrapper" id="avatar-toggle">
+      <div class="sidebar-avatar">
         <%= current_user.name.first.upcase %>
       </div>
-
-      <div class="avatar-menu">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </div>
+    </div>
+    <div class="avatar-dropdown" id="avatar-dropdown">
+      <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "avatar-dropdown-item" %>
     </div>
   </div>
 </aside>
-
-<!--chat_controller-->
-<!-- class ChatController < ApplicationController
-  before_action :enable_sidebar
-
-  private
-
-  def enable_sidebar
-    @show_sidebar = true
-  end
-end -->
-
-<!--project_controller-->
-<!-- class ProjectsController < ApplicationController
-  before_action :enable_sidebar
-
-  private
-
-  def enable_sidebar
-    @show_sidebar = true
-  end
-end -->

@@ -1,4 +1,4 @@
-// What I put in the application.html
+// Layout wrapper for pages with sidebar
 .page-wrapper {
   display: block;
 }
@@ -8,85 +8,274 @@
   min-height: 100vh;
 }
 
-// Sidebar specific
+.main-content {
+  flex: 1;
+  min-width: 0;
+  background-color: #F7F5EF;
+}
+
+// Sidebar styles
 .sidebar {
-  width: 260px;
+  width: 240px;
+  min-height: 100vh;
+  height: 100vh;
+  position: sticky;
+  top: 0;
   background-color: #EFECE3;
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: width 0.2s ease;
+  padding: 16px 10px;
+  transition: width 0.22s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
 }
 
 .sidebar.collapsed {
-  width: 80px;
+  width: 56px;
 }
 
-// Main content of sidebar
-.main-content {
-  flex: 1;
-  padding: 40px;
-}
-
-
-// Hide labels when collapsed
-.sidebar.collapsed .label,
-.sidebar.collapsed .brand-name,
-.sidebar.collapsed .recent-title {
-  display: none;
-}
-
-// Brand
-.brand {
+// Header
+.sidebar-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  margin-bottom: 30px;
   justify-content: space-between;
+  padding: 0 6px;
+  margin-bottom: 20px;
 }
 
-// Nav items
-.nav-item {
+.brand-link {
   display: flex;
   align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
+  gap: 8px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
-.nav-item:hover {
-  background-color: #E4E0D6;
+.brand-logo {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
 }
 
-// Recent
-.recent-section {
-  margin-top: 30px;
-}
-
-.recent-title {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-// Bottom avatar
-.sidebar-bottom {
-  margin-top: 30px;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.brand-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5A533D;
+  white-space: nowrap;
 }
 
 .toggle-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px;
-  color: inherit;
+  color: #858279;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: #E4E0D6;
+    color: #5A533D;
+  }
+}
+
+// Navigation items
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: #5A533D;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: #E4E0D6;
+    color: #5A533D;
+    text-decoration: none;
+
+  }
+
+  &.active {
+    background-color: #E4E0D6;
+    font-weight: 600;
+    color: #5A533D;
+
+  }
+}
+
+// Recent section
+.recent-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #D5D1C9 transparent;
+
+  &::-webkit-scrollbar { width: 3px; }
+  &::-webkit-scrollbar-thumb {
+    background-color: #D5D1C9;
+    border-radius: 4px;
+  }
+}
+
+.recent-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #B0ACA0;
+  padding: 0 10px;
+  margin-bottom: 4px;
+}
+
+.recent-item {
+  font-weight: 400;
+  color: #858279;
+
+  &:hover { color: #5A533D; }
+}
+
+.recent-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+}
+
+// Avatar
+.sidebar-bottom {
+  position: relative;
+  border-top: 1px solid rgba(90, 83, 61, 0.12);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+.avatar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: #E4E0D6;
+  }
+}
+
+.sidebar-avatar {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;  // prevents it from shrinking
+  min-height: 32px;
+  border-radius: 50%;
+  background-color: #eecd13;
+  color: #EFECE3;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-dropdown {
+  display: none;
+  position: absolute;
+  bottom: 56px;
+  left: 8px;
+  background-color: #F7F5EF;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(90, 83, 61, 0.15);
+  overflow: hidden;
+  min-width: 140px;
+  z-index: 100;
+
+  &.open {
+    display: block;
+  }
+}
+
+.avatar-dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #5A533D;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: #EFECE3;
+    color: #5A533D;
+    text-decoration: none;
+  }
+}
+
+// When sidebar is collapsed, hide text and center icons
+.sidebar.collapsed {
+  .brand-link,
+  .label,
+  .recent-title,
+  .recent-section {
+    display: none;
+  }
+
+  .sidebar-header {
+    justify-content: center;
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 8px;
+    gap: 0;
+  }
+
+  .avatar-wrapper {
+    justify-content: center;
+    padding: 6px;
+  }
+
+  .avatar-dropdown {
+    left: 56px;
+    bottom: 0;
+  }
+}
+
+// for the feather icons to be correct size
+.nav-item i,
+.toggle-btn i {
+  display: flex;
+  flex-shrink: 0;
 }
