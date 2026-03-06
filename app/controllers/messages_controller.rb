@@ -38,6 +38,7 @@ class MessagesController < ApplicationController
         response = ruby_llm_chat.ask(combined_message)
         Message.create(role: "assistant", message_type: "answer", content: response.content, chat: @chat)
       end
+      @chat.generate_title_from_first_message
 
       redirect_to chat_path(@chat)
     else
