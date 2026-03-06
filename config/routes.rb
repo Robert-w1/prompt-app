@@ -3,11 +3,6 @@ Rails.application.routes.draw do
   get 'projects/new'
   get 'projects/show'
   devise_for :users
-
-  authenticate :user do
-    root to: "chats#index", as: :authenticated_root
-  end
-
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
