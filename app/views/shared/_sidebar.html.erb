@@ -16,10 +16,34 @@
 
     <!-- Navigation -->
     <nav class="sidebar-nav">
-      <!-- Search button -->
-      <div class="nav-item" id="sidebar-search-btn">
-        <i data-feather="search"></i>
-        <span class="label">Search</span>
+      <!-- Stimulus search controller wraps the trigger + dropdown -->
+      <!-- click@window->search#close closes the dropdown when clicking anywhere outside -->
+      <div data-controller="search" data-action="click@window->search#close">
+
+        <!-- Clicking this triggers search#toggle to open/close the dropdown -->
+        <div class="nav-item search-trigger" data-action="click->search#toggle">
+          <i data-feather="search"></i>
+          <span class="label">Search</span>
+        </div>
+
+        <!-- Hidden by default, Stimulus adds "open" class to show it -->
+        <div class="search-dropdown" data-search-target="dropdown">
+          <div class="search-input-wrapper">
+            <i data-feather="search"></i>
+            <!-- input event fires search#search on every keystroke -->
+            <!-- click event fires stopClose to prevent the window listener from closing the dropdown -->
+            <input type="text"
+                  placeholder="Search chats, messages,..."
+                  autocomplete="off"
+                  data-search-target="input"
+                  data-action="input->search#search click->search#stopClose">
+          </div>
+          <!-- Results are injected here dynamically by renderResults() in the Stimulus controller -->
+          <div class="search-results" data-search-target="results">
+            <p class="search-hint">Type at least 2 characters...</p>
+          </div>
+        </div>
+
       </div>
 
       <!-- New chat -->
