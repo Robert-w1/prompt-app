@@ -16,14 +16,24 @@
     <% @chat.messages.each do |message| %>
       <% if message.role == "user" %>
         <div class="d-flex justify-content-end mb-2">
-          <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
-            <%= raw(render_markdown(message.content)) %>
+          <div class="bg-white px-3 pb-0 pt-3 chat-bubble">
+            <div class="p-3">
+              <%= raw(render_markdown(message.content)) %>
+            </div>
           </div>
         </div>
-      <% elsif message.role == "assistant" %>
+      <% elsif message.role == "assistant" && message.message_type == "answer" %>
         <div class="d-flex justify-content-start mb-5">
           <div class="px-3 pb-0 pt-3">
             <%= raw(render_markdown(message.content)) %>
+          </div>
+        </div>
+      <% elsif message.role == "assistant" && message.message_type == "suggestion" %>
+        <h6>Here is your improved prompt:<h6>
+        <div class="d-flex justify-content-start mb-5">
+          <div class="suggested_prompt">
+            <% suggestion = raw(render_markdown("\"#{message.content}\"")) %>
+            <%= suggestion %>
           </div>
         </div>
       <% end %>

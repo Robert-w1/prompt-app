@@ -1,0 +1,70 @@
+.category-checkbox {
+  display: none;
+}
+
+// .category-button:hover {
+//   background: #eaeaea;
+// }
+
+.category-checkbox:checked + label,
+label:has(.category-checkbox:checked) {
+  background-color: #859279;
+}
+
+.categories-grid .checkbox {
+  display: contents;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.suggested_prompt {
+  font-style: italic;
+  color: #858279;
+  background-color: #EFECE3;
+  border-left: 3px solid #B0ACA0;
+  padding: 10px 16px;
+  border-radius: 0 6px 6px 0;
+
+  &--gold {
+    border-left-color: #EECD13;
+    color: #5A533D;
+    font-style: normal;
+    font-weight: 600;
+  }
+}
+
+.custom-quote {
+  /* Define the quotes: double quotes for the first level */
+  quotes: "“" "”";
+}
+
+.custom-quote::before {
+  /* Insert the opening quote */
+  content: open-quote;
+  /* Optional: add custom styling to the quote character itself */
+  // color: #ff6a2b;
+  font-size: 1.5em;
+}
+
+.custom-quote::after {
+  /* Insert the closing quote */
+  content: close-quote;
+  // color: #ff6a2b;
+  font-size: 1.5em;
+}
+
+.chat-bubble {
+  max-width: 85%;
+  word-wrap: break-word;
+  border-radius: 50rem;
+}
