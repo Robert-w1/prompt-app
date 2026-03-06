@@ -47,7 +47,7 @@
       </div>
 
       <!-- New chat -->
-      <%= link_to chats_path, data: { turbo_method: :post }, class: "nav-item" do %>
+      <%= button_to chats_path, data: { turbo_method: :post }, class: "nav-item" do %>
         <i data-feather="edit"></i>
         <span class="label">New chat</span>
       <% end %>
