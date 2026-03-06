@@ -12,14 +12,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
         <% if user_signed_in? %>
-          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item nav-item dropdown navbar-nav mx-auto" %>
+          <li class="nav-item dropdown">
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </li>
         <% elsif current_page?("/users/sign_in") %>
 
         <% else %>
-            <%= link_to "Enter", new_user_session_path, class: " btn-primary nav-item" %>
+          <li class="nav-item">
+            <%= link_to "Enter", new_user_session_path, class: " btn-primary" %>
+          </li>
         <% end %>
-    </div>
+      </ul>
     </div>
   </div>
 </nav>
