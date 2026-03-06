@@ -17,7 +17,6 @@ class MessagesController < ApplicationController
     #   @chat.save
     # end
 
-    # If only one category can be selected
     unless params[:message][:chat][:category_id].empty?
       cat_id = params[:message][:chat][:category_id].to_i
       category = Category.find(cat_id)
