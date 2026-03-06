@@ -21,6 +21,25 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  def edit
+  @project = Project.find(params[:id])
+end
+
+def update
+  @project = Project.find(params[:id])
+  if @project.update(project_params)
+    redirect_to projects_path, notice: "Project updated."
+  else
+    render :edit, status: :unprocessable_entity
+  end
+end
+
+def destroy
+  @project = Project.find(params[:id])
+  @project.destroy
+  redirect_to projects_path, notice: "Project deleted."
+end
+
   private
 
   def enable_sidebar
@@ -34,4 +53,23 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name, :description)
   end
+end
+
+def edit
+  @project = Project.find(params[:id])
+end
+
+def update
+  @project = Project.find(params[:id])
+  if @project.update(project_params)
+    redirect_to projects_path, notice: "Project updated."
+  else
+    render :edit, status: :unprocessable_entity
+  end
+end
+
+def destroy
+  @project = Project.find(params[:id])
+  @project.destroy
+  redirect_to projects_path, notice: "Project deleted."
 end
