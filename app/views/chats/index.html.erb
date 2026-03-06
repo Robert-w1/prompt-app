@@ -1,5 +1,49 @@
-<h1>Chats</h1>
+<div class="container">
+  <div class="chats-header mt-3 mb-4">
+    <h1 class="chats-title">All Chats</h1>
+    <%= link_to chats_path, data: { turbo_method: :post }, class: "btn-primary chats-new-btn" do %>
+      <i data-feather="edit"></i>
+      New chat
+    <% end %>
+  </div>
 
-<% @chats.each do |chat| %>
-  <%= link_to chat.title, chat_path(chat) %> (<%= chat.category.name unless chat.category.nil?%>)
-<% end %>
+  <% if @chats.empty? %>
+    <p class="chats-empty">No chats yet. Start one!</p>
+  <% else %>
+    <div class="d-flex flex-wrap gap-3">
+      <% @chats.each do |chat| %>
+
+        <!-- Card — clicking anywhere navigates to chat -->
+        <div class="card folder-card"
+             style="width: 18rem; cursor: pointer;"
+             data-controller="chat-menu"
+             onclick="window.location='<%= chat_path(chat) %>'">
+          <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-start">
+              <h5 class="card-title mb-0"><%= chat.title.presence || "Untitled chat" %></h5>
+
+              <!-- 3-dot menu — stopPropagation so card click doesn't fire -->
+              <div style="position: relative;" onclick="event.stopPropagation()">
+                <button class="chat-menu-btn"
+                        data-action="click->chat-menu#toggle"
+                        aria-label="Options">
+                  <i data-feather="more-horizontal"></i>
+                </button>
+                <div class="chat-menu-dropdown">
+                  <%= link_to "Delete", chat_path(chat),
+                      data: { turbo_method: :delete, turbo_confirm: "Delete this chat?" },
+                      class: "chat-menu-item chat-menu-item--danger" %>
+                </div>
+              </div>
+            </div>
+
+            <p class="card-text mt-2 chat-row-date"><%= chat.created_at.strftime("%b %d, %Y") %></p>
+
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>
