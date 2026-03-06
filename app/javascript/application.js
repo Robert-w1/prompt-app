@@ -6,6 +6,10 @@ import "bootstrap"
 
 // Re-initialize Bootstrap components that require explicit init after Turbo navigations
 document.addEventListener("turbo:load", () => {
+  // Re-initialize Bootstrap dropdowns
+  document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(el => {
+    new bootstrap.Dropdown(el)
+})
   // Sidebar toggle
   const toggle = document.getElementById("sidebar-toggle")
   const sidebar = document.getElementById("sidebar")

@@ -1,35 +1,58 @@
+<style>
+  .menu-item:hover {
+    background-color: #f0f0f0;
+  }
+  .menu-item-danger:hover {
+    background-color: #fce4e4;
+  }
+</style>
+
 <div class="container">
-  <h1 class="mb-4">All Projects</h1>
+  <h1 class="mb-4 mt-3">All Projects</h1>
 
   <%= link_to "+ New Project", new_project_path, class: "btn-primary text-decoration-none" %>
 
   <div class="d-flex flex-wrap gap-3 mt-4">
     <% @projects.each do |project| %>
-      <%= link_to project_path(project), class: "card folder-card text-decoration-none", style: "width: 18rem;" do %>
+      <div class="card folder-card" style="width: 18rem; cursor: pointer;"
+           onclick="window.location='<%= project_path(project) %>'">
         <div class="card-body">
-          <h5 class="card-title"><%= project.name %></h5>
-          <p class="card-text"><%= project.description %></p>
+
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="card-title mb-0"><%= project.name %></h5>
+
+            <div style="position: relative;" onclick="event.stopPropagation();">
+              <button onclick="const menu = this.nextElementSibling; menu.style.display = menu.style.display === 'block' ? 'none' : 'block';"
+                      style="background: none; border: none; font-size: 1.25rem; cursor: pointer; padding: 0 4px; color: #6c757d;">
+                &#8943;
+              </button>
+              <div class="project-dropdown-menu" style="display: none; position: absolute; right: 0; top: 100%; background: white; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 10; min-width: 120px;">                <%= link_to "Edit", edit_project_path(project),
+                      class: "menu-item",
+                      style: "display: block; padding: 8px 16px; color: #333; text-decoration: none;" %>
+                <a href="#"
+                  class="menu-item-danger"
+                  style="display: block; padding: 8px 16px; color: #dc3545; text-decoration: none;"
+                  onclick="event.preventDefault(); event.stopPropagation(); if(confirm('Delete &quot;<%= project.name %>&quot;?')) { fetch('<%= project_path(project) %>', { method: 'DELETE', headers: { 'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content, 'Accept': 'text/html' }}).then(() => { this.closest('.card').remove(); }); }">
+                  Delete
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <p class="card-text mt-2"><%= project.description %></p>
+
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
-<!-- we do not want a bullet point list. We want them to display as cards.
-Chnage the picture, title, margin, etc. Get it looking good!-->
 
- <!--       <section>
-          <div class="container cards-align">
-              <div class="cards">
-                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('intent.png') %>')">
-              Project 1
-                </div>
-                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('key_context.png') %>')">
-              Project 2
-                </div>
-                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('objectives.png') %>')">
-              Project 3
-                </div>
-              </div>
-          </div>
-        </section>
--->
+<script>
+  document.addEventListener("click", function(e) {
+    if (!e.target.closest('[onclick*="stopPropagation"]')) {
+      document.querySelectorAll('.project-dropdown-menu').forEach(function(menu) {
+        menu.style.display = "none";
+      });
+    }
+  });
+</script>
