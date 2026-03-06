@@ -23,15 +23,16 @@ class MessagesController < ApplicationController
       category = Category.find(cat_id)
       @chat.category = category
       @chat.save
+      category_prompt = "[Categories: #{@chat.category.name}]"
     end
 
     if @message.save
       user_message = @message.content
-      category_prompt = "[Categories: #{@chat.category.name}]"
       combined_message = [category_prompt, user_message].compact.join("\n\n")
       ruby_llm_chat = RubyLLM.chat
       response = ruby_llm_chat.with_instructions(system_prompt).ask(combined_message)
       Message.create(role: "assistant", content: response.content, chat: @chat)
+      @chat.generate_title_from_first_message
       redirect_to chat_path(@chat)
     else
       render "chats/show", status: :unprocessable_entity
