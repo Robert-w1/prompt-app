@@ -42,6 +42,11 @@ $disabled-text: #B0ACA0;
   box-shadow: none;
 }
 
+button {
+  border: none;
+  background-color: none !important;
+}
+
 .folder-card a {
   color: $primary-text;
   text-decoration: none;
