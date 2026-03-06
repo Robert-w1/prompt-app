@@ -5,7 +5,11 @@
     <h1 id="chat_title">Hello.</h1>
   <% else %> <!-- Show page after first message -->
     <h1 id="chat_title"><%= @chat.title %></h1>
-    <h2 id="category-subtitle"><%= @chat.category.nil? ? "-" : @chat.category.name  %></h2>
+    <% if @chat.category.nil? %>
+      <h2 id="category-subtitle" class="empty"></h2>
+    <% else %>
+      <h2 id="category-subtitle"><%= @chat.category.name  %></h2>
+    <% end %>
   <% end %>
 
   <div id="messages">
